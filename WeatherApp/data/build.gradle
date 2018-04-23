@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    def dependency = rootProject.ext.dependencies
+
+
+    implementation dependency.gson
+    implementation dependency.javaxInject
+
+    implementation dependency.archComponentsExtention
+    annotationProcessor dependency.archComponentsCompiler
+
+    api dependency.okHttp
+    api dependency.okHttpLogging
+
+    api dependency.retrofit
+    api dependency.retrofitConverter
+    api dependency.retrofitRx
+
+    api dependency.location
+
+    api dependency.room
+    annotationProcessor dependency.roomCompiler
+    api dependency.roomCompilerRx
+
+    implementation project(path: ':domain')
+}

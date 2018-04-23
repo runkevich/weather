@@ -1,0 +1,85 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.40'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+ext{
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.2"
+    minSdkVersion = 18
+    targetSdkVersion = 27
+
+    archComponentVersion = '1.0.0'
+    daggerVersion = '2.15'
+    javaxInjectVersion = '1'
+
+    retrofitVersion = '2.4.0'
+    retrofitRxAdapterVersion = '1.0.0'
+
+    androidBindingCompiler = '3.0.0'
+    rxjavaVersion = '2.1.10'
+    rxandroidVersion = '2.0.2'
+    gsonVersion = '2.8.2'
+
+    okHttpVersion='3.10.0'
+
+    locationGoogleVersion='11.0.0'
+
+    dependencies = [
+
+            supportAppcompat: "com.android.support:appcompat-v7:$buildToolsVersion",
+            supportV4:  "com.android.support:support-v4:$buildToolsVersion",
+            supportDesign: "com.android.support:design:$buildToolsVersion",
+
+            androidBindingCompiler: "com.android.databinding:compiler:$androidBindingCompiler",
+
+            archComponentsExtention: "android.arch.lifecycle:extensions:$archComponentVersion",
+            archComponentsCompiler: "android.arch.lifecycle:compiler:$archComponentVersion",
+
+            dagger: "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            javaxInject:"javax.inject:javax.inject:$javaxInjectVersion",
+
+            rxAndroid:  "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+            rxjava2: "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitRx: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            okHttp: "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            okHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+
+            gson: "com.google.code.gson:gson:$gsonVersion",
+
+            location: "com.google.android.gms:play-services-location:$locationGoogleVersion",
+
+            room: "android.arch.persistence.room:runtime:$archComponentVersion",
+            roomCompiler: "android.arch.persistence.room:compiler:$archComponentVersion",
+            roomCompilerRx: "android.arch.persistence.room:rxjava2:$archComponentVersion",
+    ]
+
+}
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
