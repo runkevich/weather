@@ -1,10 +1,13 @@
 package com.gmail.runkevich8.data.net;
 
 
+import android.support.annotation.NonNull;
+
 import com.gmail.runkevich8.data.entity.WeatherResponseData;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 public interface  RestApi {
@@ -16,6 +19,11 @@ public interface  RestApi {
 //    Observable<String> getCurrentWeather(@Query("zip") String zipCode,
 //                                         @Query("units") String tempUnit);
 
-    @GET("/data/2.5/weather")
-    public Call<WeatherResponseData> getWeather(@Query("q") String cityName, @Query("APPID") String apiKey, @Query("units") String units);
+  //  @GET("/data/2.5/weather")
+  @NonNull
+  @GET("data/2.5/weather?units=metric")
+  @Headers({"Content-Type:application/json"})
+  //  public Call<WeatherDataModel> getWeatherByCoordinates(@Query("q") String cityName, @Query("APPID") String apiKey, @Query("units") String units);
+  Observable<WeatherResponseData> getWeatherByCoordinates(
+          @Query("lat") double lat, @Query("lon") double lon);
 }

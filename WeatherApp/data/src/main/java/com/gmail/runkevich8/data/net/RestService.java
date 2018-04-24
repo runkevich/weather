@@ -3,10 +3,13 @@ package com.gmail.runkevich8.data.net;
 
 import com.gmail.runkevich8.data.entity.WeatherResponseData;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 @Singleton
 public class RestService {
@@ -20,9 +23,17 @@ public class RestService {
 
     }
 
-    public Call<WeatherResponseData> getWeather(String cityName, String apiKey, String units) {
+    public Observable<List<WeatherResponseData>> getWeatherByCoordinates(double lat, double lon) {
         return restApi
-                .getWeather( cityName, apiKey,  units);
+                .getWeatherByCoordinates(lat,lon)
+                .map(new Function<WeatherResponseData, List<WeatherResponseData>>() {
+                    @Override
+                    public List<WeatherResponseData> apply(WeatherResponseData weatherResponseData) throws Exception {
+                        return  null;
+                               // weatherResponseData.getMain().getTemp();
+                    }
+                });
+
 
     }
 

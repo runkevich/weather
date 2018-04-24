@@ -36,6 +36,8 @@ dependencies {
     implementation dependency.supportDesign
     implementation dependency.rxAndroid
 
+    implementation dependency.rxPermission
+
     implementation dependency.archComponentsExtention
     annotationProcessor dependency.archComponentsCompiler
 

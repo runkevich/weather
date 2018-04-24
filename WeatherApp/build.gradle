@@ -25,6 +25,8 @@ ext{
     daggerVersion = '2.15'
     javaxInjectVersion = '1'
 
+    rxpermissionVersion = '0.9.5@aar'
+
     retrofitVersion = '2.4.0'
     retrofitRxAdapterVersion = '1.0.0'
 
@@ -35,7 +37,7 @@ ext{
 
     okHttpVersion='3.10.0'
 
-    locationGoogleVersion='11.0.0'
+    locationGoogleVersion='15.0.0'
 
     dependencies = [
 
@@ -54,6 +56,8 @@ ext{
 
             rxAndroid:  "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
             rxjava2: "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+
+            rxPermission:"com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissionVersion",
 
             retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",

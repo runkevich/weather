@@ -2,10 +2,12 @@ package com.gmail.runkevich8.data.repository;
 
 
 import com.gmail.runkevich8.data.database.WeatherDAO;
+import com.gmail.runkevich8.data.entity.WeatherResponseData;
 import com.gmail.runkevich8.data.net.RestApi;
 import com.gmail.runkevich8.domain.entity.WeatherInfo;
 import com.gmail.runkevich8.domain.repository.WeatherRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,6 +16,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 public class WeatherRepositoryImp implements WeatherRepository {
 
@@ -82,6 +85,39 @@ public class WeatherRepositoryImp implements WeatherRepository {
 //
 //        return data;
 //    }
+
+
+    @Override
+    public Observable<List<WeatherInfo>> getWeather(double lat, double lon) {
+        return restApi
+                .getWeatherByCoordinates(lat,lon)
+                .map(new Function<WeatherResponseData, List<WeatherInfo>>() {
+                    @Override
+                    public List<WeatherInfo> apply(WeatherResponseData weatherResponseData) throws Exception {
+                        List<WeatherInfo> list = new ArrayList<>();
+                        for (WeatherResponseData weather : weatherResponseData) {
+                       //     list.add(new WeatherInfo(weather.getMain().getTemp());
+                        }
+                        return list;
+                    }
+                });
+    }
+
+
+    @Override
+    public Observable<List<Gif>> search(String search) {
+        return restServise
+                .getSearch(search).map(new Function<List<GifNet>, List<Gif>>() {
+                    @Override
+                    public List<Gif> apply(List<GifNet> gifNets) throws Exception {
+                        List<Gif> list = new ArrayList<>();
+                        for (GifNet gifNet : gifNets) {
+                            list.add(new Gif(gifNet.getImages().getFixed_width_small().getUrl()));
+                        }
+                        return list;
+                    }
+                });
+    }
 
 
     @Override

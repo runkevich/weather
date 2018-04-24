@@ -10,7 +10,7 @@ import io.reactivex.Observable;
 
 public interface WeatherRepository {
 
-    Observable<WeatherInfo> getWeather (String id);
+    Observable<List<WeatherInfo>> getWeather (double lat, double lon);
 
     Observable<List<WeatherInfo>> getList();
 

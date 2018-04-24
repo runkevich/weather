@@ -5,8 +5,6 @@ import com.gmail.runkevich8.domain.executor.PostExecutionThread;
 import com.gmail.runkevich8.domain.executor.ThreadExecutor;
 import com.gmail.runkevich8.domain.repository.WeatherRepository;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
@@ -21,8 +19,8 @@ public class GetDataUseCase extends BaseUseCase {
         super(postExecutionThread, threadExecuteion);
     }
 
-    public Observable<List<WeatherInfo>> getListWeathers() {
-        return weatherRepository.getList()
+    public Observable<WeatherInfo> getListWeathers(double lat, double lon) {
+        return weatherRepository.getWeather(lat,lon)
                 .subscribeOn(threadExecuteion)
                 .observeOn(postExecuteionThread);
     }
