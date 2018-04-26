@@ -4,8 +4,9 @@ package com.gmail.runkevich8.app;
 import android.app.Application;
 
 import com.gmail.runkevich8.injection.component.ApplicationComponent;
+import com.gmail.runkevich8.injection.component.DaggerApplicationComponent;
 import com.gmail.runkevich8.injection.module.ApplicationModule;
-import com.gmail.runkevich8.weatherapp.BuildConfig;
+
 import com.squareup.leakcanary.LeakCanary;
 
 public class AndroidApplication extends Application {
@@ -30,8 +31,8 @@ public class AndroidApplication extends Application {
     }
 
     private void initializeLeakDetection() {
-        if (BuildConfig.DEBUG) {
+       // if (BuildConfig.DEBUG) {
             LeakCanary.install(this);
-        }
+      //  }
     }
 }

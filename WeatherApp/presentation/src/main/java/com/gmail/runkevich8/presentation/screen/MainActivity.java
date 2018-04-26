@@ -9,7 +9,8 @@ import com.gmail.runkevich8.weatherapp.R;
 public class MainActivity extends BaseActivity {
 
     //todo to nice welcome screen
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigateToUserList();

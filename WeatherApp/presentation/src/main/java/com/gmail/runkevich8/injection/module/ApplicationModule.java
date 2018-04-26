@@ -34,8 +34,9 @@ import com.gmail.runkevich8.executor.UIThread;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
-
+@Module
 public class ApplicationModule {
     private static final String CITIES_FILE_NAME = "cities.txt";
     private final AndroidApplication application;

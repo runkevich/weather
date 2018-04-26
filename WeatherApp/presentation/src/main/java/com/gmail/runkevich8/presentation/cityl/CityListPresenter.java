@@ -6,6 +6,7 @@ import com.gmail.runkevich8.domain.exception.ErrorBundle;
 import com.gmail.runkevich8.domain.interactor.DefaultObserver;
 import com.gmail.runkevich8.domain.interactor.GetCityList;
 import com.gmail.runkevich8.exception.ErrorMessageFactory;
+import com.gmail.runkevich8.injection.model.CityModel;
 import com.gmail.runkevich8.mapper.CityModelDataMapper;
 import com.gmail.runkevich8.navigation.Navigator;
 
@@ -14,9 +15,7 @@ import javax.inject.Inject;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-/**
- * Created by Eka on 26.04.2018.
- */
+
 
 public class CityListPresenter implements CityListMvpContract.Presenter {
 
@@ -40,22 +39,22 @@ public class CityListPresenter implements CityListMvpContract.Presenter {
         this.cityListView = view;
     }
 
-    @Override public void resume() {
+    @Override
+    public void resume() {
         bindViewIntents();
     }
 
-    @Override public void pause() {
+    @Override
+    public void pause() {
         this.cityClickDisposable.dispose();
     }
 
-    @Override public void destroy() {
+    @Override
+    public void destroy() {
         this.getCityListUseCase.dispose();
         this.cityListView = null;
     }
 
-    /**
-     * Initializes the presenter by start retrieving the city list.
-     */
     public void initialize() {
         this.loadCityList();
     }
@@ -88,26 +87,31 @@ public class CityListPresenter implements CityListMvpContract.Presenter {
         this.getCityListUseCase.execute(new CityListObserver(), null);
     }
 
-    @Override public void onCityClick(CityModel cityModel) {
+    @Override
+    public void onCityClick(CityModel cityModel) {
         navigator.navigateToWeather(cityListView.context(), cityModel.getId());
     }
 
-    @Override public void bindViewIntents() {
+    @Override
+    public void bindViewIntents() {
         cityClickDisposable = cityListView.cityClick().subscribe(this::onCityClick);
     }
 
     private final class CityListObserver extends DefaultObserver<City> {
 
-        @Override public void onComplete() {
+        @Override
+        public void onComplete() {
             CityListPresenter.this.hideViewLoading();
         }
 
-        @Override public void onError(Throwable e) {
+        @Override
+        public void onError(Throwable e) {
             CityListPresenter.this.hideViewLoading();
             CityListPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
         }
 
-        @Override public void onNext(City city) {
+        @Override
+        public void onNext(City city) {
             CityListPresenter.this.showCityInView(city);
         }
     }

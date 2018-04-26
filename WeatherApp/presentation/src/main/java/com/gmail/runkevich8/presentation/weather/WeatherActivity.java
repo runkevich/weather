@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.gmail.runkevich8.injection.HasComponent;
-import com.gmail.runkevich8.injection.DaggerAppComponent;
+import com.gmail.runkevich8.injection.component.DaggerWeatherComponent;
 import com.gmail.runkevich8.injection.component.WeatherComponent;
 import com.gmail.runkevich8.presentation.base.BaseActivity;
 import com.gmail.runkevich8.weatherapp.R;
@@ -41,9 +41,7 @@ public class WeatherActivity extends BaseActivity implements HasComponent<Weathe
         super.onSaveInstanceState(outState);
     }
 
-    /**
-     * Initializes this activity.
-     */
+
     private void initializeActivity(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             this.cityId = getIntent().getStringExtra(INTENT_EXTRA_PARAM_CITY_ID);

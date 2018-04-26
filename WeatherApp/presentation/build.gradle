@@ -52,13 +52,18 @@ dependencies {
 
     annotationProcessor dependency.androidBindingCompiler
 
-    implementation dependency.butterKnifeCompiler
+    annotationProcessor dependency.butterKnifeCompiler
     implementation dependency.butterKnife
 
     implementation dependency.rxBinding
     implementation dependency.rxBindingSupportV4
 
     implementation dependency.leakCanary
+
+    implementation dependency.glide
+    annotationProcessor dependency.glideCompiler
+
+    implementation dependency.constraintLayout
 
     implementation project(path: ':data')
     implementation project(path: ':domain')

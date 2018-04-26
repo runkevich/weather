@@ -7,17 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gmail.runkevich8.injection.model.CityModel;
 import com.gmail.runkevich8.weatherapp.R;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
-/**
- * Created by Eka on 26.04.2018.
- */
+
 
 public class CityListAdapter  extends RecyclerView.Adapter<CityListAdapter.CityViewHolder> {
 
@@ -60,7 +65,7 @@ public class CityListAdapter  extends RecyclerView.Adapter<CityListAdapter.CityV
     }
 
     public void addCityModel(CityModel cityModel) {
-        //todo validate ?
+
         this.citiesCollection.add(cityModel);
         this.notifyItemInserted(getItemCount() - 1);
     }

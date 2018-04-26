@@ -3,6 +3,7 @@ package com.gmail.runkevich8.mapper;
 
 import com.gmail.runkevich8.domain.entity.City;
 import com.gmail.runkevich8.injection.PerActivity;
+import com.gmail.runkevich8.injection.model.CityModel;
 
 import java.util.Collection;
 import java.util.Collections;

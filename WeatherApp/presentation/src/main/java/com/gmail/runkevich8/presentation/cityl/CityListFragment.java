@@ -11,10 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.gmail.runkevich8.injection.component.CityListComponent;
+import com.gmail.runkevich8.injection.model.CityModel;
 import com.gmail.runkevich8.presentation.base.BaseFragment;
 import com.gmail.runkevich8.weatherapp.R;
 
 import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.reactivex.Observable;
 
 public class CityListFragment extends BaseFragment implements CityListMvpContract.View {
 
@@ -93,7 +98,8 @@ public class CityListFragment extends BaseFragment implements CityListMvpContrac
         this.cityListPresenter.initialize();
     }
 
-    @Override public void renderCity(CityModel cityModel) {
+    @Override
+    public void renderCity(CityModel cityModel) {
         if (cityModel != null) {
             this.cityListAdapter.addCityModel(cityModel);
         }

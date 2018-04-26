@@ -4,6 +4,9 @@ package com.gmail.runkevich8.navigation;
 import android.content.Context;
 import android.content.Intent;
 
+import com.gmail.runkevich8.presentation.cityl.CityListActivity;
+import com.gmail.runkevich8.presentation.weather.WeatherActivity;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

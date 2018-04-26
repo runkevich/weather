@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.gmail.runkevich8.injection.HasComponent;
 import com.gmail.runkevich8.injection.component.CityListComponent;
+import com.gmail.runkevich8.injection.component.DaggerCityListComponent;
 import com.gmail.runkevich8.presentation.base.BaseActivity;
 import com.gmail.runkevich8.weatherapp.R;
 

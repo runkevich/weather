@@ -3,6 +3,8 @@ package com.gmail.runkevich8.mapper;
 
 import com.gmail.runkevich8.domain.entity.Weather;
 import com.gmail.runkevich8.injection.PerActivity;
+import com.gmail.runkevich8.injection.model.WeatherModel;
+import com.gmail.runkevich8.presentation.weather.WeatherViewModel;
 
 import javax.inject.Inject;
 
