@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="isCentigrade"
+        android:title="Show temparature in centigrade?"
+        android:summaryOn="Temparature will be displayed in centigrade"
+        android:summaryOff="Temparature will be displayed in Fahrenheit"
+        android:defaultValue="true" />
+
+    <EditTextPreference
+        android:key="zipCode"
+        android:title="ZIP Code"
+        android:summary="ZIP code for which the weather is to be found"
+        />
+
+</PreferenceScreen>

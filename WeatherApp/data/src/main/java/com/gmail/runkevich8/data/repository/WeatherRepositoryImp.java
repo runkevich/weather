@@ -1,127 +1,46 @@
-package com.gmail.runkevich8.data.repository;
-
-
-import com.gmail.runkevich8.data.database.WeatherDAO;
-import com.gmail.runkevich8.data.entity.WeatherResponseData;
-import com.gmail.runkevich8.data.net.RestApi;
-import com.gmail.runkevich8.domain.entity.WeatherInfo;
-import com.gmail.runkevich8.domain.repository.WeatherRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import javax.inject.Inject;
-
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.functions.Function;
-
-public class WeatherRepositoryImp implements WeatherRepository {
-
-    private final String API_KEY = "d1ddc45b485931b4c239c07b04844991";
-
-    private final WeatherDAO weatherDao;
-    private final RestApi restApi;
-
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-    @Inject
-    public WeatherRepositoryImp(WeatherDAO weatherDao, RestApi restApi) {
-        this.weatherDao = weatherDao;
-        this.restApi = restApi;
-    }
-
-    public Flowable<List<String>> getCityList() {
-        return weatherDao.loadCityList();
-    }
-
-    public Observable<WeatherInfo> getWeather(final String cityName) {
-//        MediatorLiveData<WeatherInfo> result = new MediatorLiveData<>();
+//package com.gmail.runkevich8.data.repository;
 //
-//        Flowable<Weather> dbSource = weatherDao.load(cityName);
-//        result.addSource(dbSource, weather -> result.setValue(new WeatherInfo(com.gmail.runkevich8.data.repository.Status.LOADING, weather)));
 //
-//        this.restApi.getWeather(cityName, API_KEY, "metric").enqueue(new Callback<WeatherResponseData>() {
+//import com.gmail.runkevich8.data.database.WeatherDAO;
+//import com.gmail.runkevich8.data.net.RestService;
+//import com.gmail.runkevich8.domain.entity.WeatherInfo;
+//import com.gmail.runkevich8.domain.repository.WeatherRepository;
 //
-//            @Override
-//            public void onResponse(Call<WeatherResponseData> call, Response<WeatherResponseData> response) {
-//                WeatherResponseData body = response.body();
-//                Weather newWeather = new Weather(cityName, body.getMain().getTemp(), body.getWeather()[0].getMain());
+//import java.util.LinkedList;
+//import java.util.List;
 //
-//                result.removeSource(dbSource);
-//                executorService.execute(() -> {
-//                    weatherDao.save(newWeather);
-//                    result.addSource(weatherDao.load(cityName), weather -> result.setValue(new WeatherInfo(Status.SUCCESS, weather)));
-//                });
-//            }
+//import javax.inject.Inject;
 //
-//            @Override
-//            public void onFailure(Call<WeatherResponseData> call, Throwable t) {
-//                result.removeSource(dbSource);
-//                result.addSource(dbSource, weather -> result.setValue(new WeatherInfo(Status.ERROR, weather)));
-//            }
-//        });
+//import io.reactivex.Observable;
 //
-        return null;
-    }
-
-
-//    public LiveData<CitiesWeatherModel> getWeathersForCountries() {
-//        final MutableLiveData<CitiesWeatherModel> data = new MutableLiveData<>();
+//public class WeatherRepositoryImp implements WeatherRepository {
 //
-//        weatherService.getWeatherForAllCountries(Constants.DEFAULT_COUNTRYCODES, Constants.API_KEY).enqueue(new Callback<CitiesWeatherModel>() {
-//            @Override
-//            public void onResponse(@NonNull Call<CitiesWeatherModel> call, @NonNull Response<CitiesWeatherModel> response) {
-//                data.setValue(response.body());
-//            }
+//    //private final String API_KEY = "d1ddc45b485931b4c239c07b04844991";
 //
-//            @Override
-//            public void onFailure(@NonNull Call<CitiesWeatherModel> call, @NonNull Throwable t) {
 //
-//            }
-//        });
+//    private final WeatherDAO weatherDao;
+//    private RestService restServise;
 //
-//        return data;
+//    //private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+//
+//    @Inject
+//    public WeatherRepositoryImp(WeatherDAO weatherDao, RestService restServise) {
+//        this.weatherDao = weatherDao;
+//        this.restServise = restServise;
 //    }
-
-
-    @Override
-    public Observable<List<WeatherInfo>> getWeather(double lat, double lon) {
-        return restApi
-                .getWeatherByCoordinates(lat,lon)
-                .map(new Function<WeatherResponseData, List<WeatherInfo>>() {
-                    @Override
-                    public List<WeatherInfo> apply(WeatherResponseData weatherResponseData) throws Exception {
-                        List<WeatherInfo> list = new ArrayList<>();
-                        for (WeatherResponseData weather : weatherResponseData) {
-                       //     list.add(new WeatherInfo(weather.getMain().getTemp());
-                        }
-                        return list;
-                    }
-                });
-    }
-
-
-    @Override
-    public Observable<List<Gif>> search(String search) {
-        return restServise
-                .getSearch(search).map(new Function<List<GifNet>, List<Gif>>() {
-                    @Override
-                    public List<Gif> apply(List<GifNet> gifNets) throws Exception {
-                        List<Gif> list = new ArrayList<>();
-                        for (GifNet gifNet : gifNets) {
-                            list.add(new Gif(gifNet.getImages().getFixed_width_small().getUrl()));
-                        }
-                        return list;
-                    }
-                });
-    }
-
-
-    @Override
-    public Observable<List<WeatherInfo>> getList() {
-        return null;
-    }
-}
+//
+//
+//    @Override
+//    public Observable<LinkedList<WeatherInfo>> getWeather(String payload, com.gmail.runkevich8.domain.entity.TempUnit tempUnit) {
+//        return restServise.getWeatherData(payload,RestService.TempUnit.CENTIGRADE);
+//
+//    }
+//
+//
+//
+//    @Override
+//    public Observable<List<WeatherInfo>> getList() {
+//        return null;
+//    }
+//
+//}

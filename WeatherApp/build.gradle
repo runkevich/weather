@@ -38,7 +38,11 @@ ext{
     okHttpVersion='3.10.0'
 
     locationGoogleVersion='15.0.0'
+    butterKnifeVersion = '8.7.0'
 
+    rxBindingVersion = '2.0.0'
+
+    leakCanaryVersion = '1.5.1'
     dependencies = [
 
             supportAppcompat: "com.android.support:appcompat-v7:$buildToolsVersion",
@@ -72,6 +76,13 @@ ext{
             room: "android.arch.persistence.room:runtime:$archComponentVersion",
             roomCompiler: "android.arch.persistence.room:compiler:$archComponentVersion",
             roomCompilerRx: "android.arch.persistence.room:rxjava2:$archComponentVersion",
+
+            butterKnife:         "com.jakewharton:butterknife:$butterKnifeVersion",
+            butterKnifeCompiler: "com.jakewharton:butterknife-compiler:$butterKnifeVersion",
+            rxBinding:          "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+            rxBindingSupportV4: "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxBindingVersion",
+
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
     ]
 
 }

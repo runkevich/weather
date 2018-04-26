@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+
+    <string name="activity_title_city_list">Список городов</string>
+    <string name="activity_title_weather">Weather</string>
+
+    <string name="exception_message_generic">Ошибка приложения</string>
+    <string name="london">Лондон</string>
+    <string name="clear_sky">Чистое небо</string>
+    <string name="currently_19">Сейчас 19°</string>
+    <string name="today_15_22">Сегодня 15°-22°</string>
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
+    <string name="fragment_args_cannot_be_null">Фрагмент = null</string>
+    <string name="weather_icon">Иконка</string>
+    <string name="some_error_occurred_pull_to_refresh">Длугая ошибка</string>
 </resources>
