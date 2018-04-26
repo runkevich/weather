@@ -22,8 +22,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="103"
-             tools:text="@string/london"/>
+            tools:layout_editor_absoluteX="103dp"
+            tools:text="@string/london"
+            />
 
         <TextView
             android:id="@+id/tv_weather_description"
@@ -47,7 +48,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_weather_description"
             tools:layout_editor_absoluteX="112dp"
-            tools:src="@drawable/weather_sunny"
+
             />
 
         <TextView

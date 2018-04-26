@@ -8,7 +8,7 @@ import com.gmail.runkevich8.weatherapp.R;
 
 public class MainActivity extends BaseActivity {
 
-    //todo to nice welcome screen
+    //todo сделать затемненные подсказки
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

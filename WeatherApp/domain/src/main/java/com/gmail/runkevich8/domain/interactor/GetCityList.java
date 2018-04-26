@@ -20,7 +20,7 @@ public class GetCityList extends UseCase<City, Void> {
     public GetCityList(CityRepository cityRepository, ThreadExecutor threadExecutor,
                 PostExecutionThread postExecutionThread, CitySorting citySorting) {
         super(threadExecutor, postExecutionThread);
-      //  Preconditions.checkNotNull(cityRepository);
+       // Preconditions.checkNotNull(cityRepository);
        // Preconditions.checkNotNull(threadExecutor);
        // Preconditions.checkNotNull(postExecutionThread);
         this.citySorting = citySorting;

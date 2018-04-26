@@ -31,10 +31,6 @@ public abstract  class BaseActivity extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(containerViewId, fragment);
         ft.commit();
-
-      //  final FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
-       // fragmentTransaction.add(containerViewId,fragment);
-        //fragmentTransaction.commit();
     }
 
 

@@ -19,10 +19,7 @@ import io.reactivex.disposables.Disposable;
 public class WeatherPresenter implements WeatherMvpContract.Presenter {
     private String cityId;
 
-    //the initial state is to show temp in celsius
     private boolean celsius = true;
-
-    //remember error state for screen rotation
     private boolean errorState;
 
     private WeatherMvpContract.View weatherView;
@@ -49,15 +46,12 @@ public class WeatherPresenter implements WeatherMvpContract.Presenter {
             showWeatherInView(celsius, weatherModel);
             bindViewIntents();
         } else {
-            //since i am not showing the user the exact reason
+
             weatherView.showError(null);
         }
     }
 
-    /**
-     * Initializes the presenter by showing/hiding proper views
-     * and retrieving user details.
-     */
+
     public void initialize(String cityId) {
         this.cityId = cityId;
         this.showViewLoading();
@@ -72,17 +66,20 @@ public class WeatherPresenter implements WeatherMvpContract.Presenter {
         this.getWeatherUseCase.execute(new WeatherObserver(), GetWeather.Params.forCity(cityId));
     }
 
-    @Override public void resume() {
+    @Override
+    public void resume() {
         bindViewIntents();
     }
 
-    @Override public void pause() {
+    @Override
+    public void pause() {
         if (this.compositeDisposable != null) {
             this.compositeDisposable.clear();
         }
     }
 
-    @Override public void destroy() {
+    @Override
+    public void destroy() {
         this.compositeDisposable.dispose();
         this.getWeatherUseCase.dispose();
         this.weatherView = null;
@@ -108,21 +105,25 @@ public class WeatherPresenter implements WeatherMvpContract.Presenter {
         }
     }
 
-    @Override public void onCelsiusClick() {
+    @Override
+    public void onCelsiusClick() {
         if (this.weatherModel != null) {
             showWeatherInView(this.celsius = true, this.weatherModel);
         }
     }
 
-    @Override public void onFahrenheitClick() {
+    @Override
+    public void onFahrenheitClick() {
         showWeatherInView(this.celsius = false, this.weatherModel);
     }
 
-    @Override public void onRefresh() {
+    @Override
+    public void onRefresh() {
         this.getWeather(cityId);
     }
 
-    @Override public void bindViewIntents() {
+    @Override
+    public void bindViewIntents() {
         Disposable fahrenheitClickDisposable =
                 this.weatherView.fahrenheitClick().subscribe(o -> onFahrenheitClick());
 
@@ -137,19 +138,22 @@ public class WeatherPresenter implements WeatherMvpContract.Presenter {
     }
 
     private final class WeatherObserver extends DefaultObserver<Weather> {
-        @Override public void onComplete() {
+        @Override
+        public void onComplete() {
             WeatherPresenter.this.hideViewLoading();
             weatherView.setRefreshing(false);
         }
 
-        @Override public void onError(Throwable e) {
+        @Override
+        public void onError(Throwable e) {
             errorState = true;
             weatherView.setRefreshing(false);
             WeatherPresenter.this.hideViewLoading();
             WeatherPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
         }
 
-        @Override public void onNext(Weather weather) {
+        @Override
+        public void onNext(Weather weather) {
             errorState = false;
             setWeatherModel(weather);
             updateView();

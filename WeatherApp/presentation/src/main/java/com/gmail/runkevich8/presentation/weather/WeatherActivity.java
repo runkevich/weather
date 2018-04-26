@@ -13,8 +13,8 @@ import com.gmail.runkevich8.weatherapp.R;
 
 public class WeatherActivity extends BaseActivity implements HasComponent<WeatherComponent> {
 
-    private static final String INTENT_EXTRA_PARAM_CITY_ID = "org.android10.INTENT_PARAM_CITY_ID";
-    private static final String INSTANCE_STATE_PARAM_CITY_ID = "org.android10.STATE_PARAM_CITY_ID";
+    private static final String INTENT_EXTRA_PARAM_CITY_ID = "INTENT_PARAM_CITY_ID";
+    private static final String INSTANCE_STATE_PARAM_CITY_ID = "STATE_PARAM_CITY_ID";
 
     public static Intent getCallingIntent(Context context, String cityId) {
         Intent callingIntent = new Intent(context, WeatherActivity.class);
@@ -25,7 +25,8 @@ public class WeatherActivity extends BaseActivity implements HasComponent<Weathe
     private String cityId;
     private WeatherComponent weatherComponent;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
 
@@ -34,7 +35,9 @@ public class WeatherActivity extends BaseActivity implements HasComponent<Weathe
 
     }
 
-    @Override protected void onSaveInstanceState(Bundle outState) {
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
         if (outState != null) {
             outState.putString(INSTANCE_STATE_PARAM_CITY_ID, this.cityId);
         }

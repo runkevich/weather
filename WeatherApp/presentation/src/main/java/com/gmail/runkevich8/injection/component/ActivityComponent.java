@@ -12,6 +12,6 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
-        //Exposed to sub-graphs.
+
         Activity activity();
 }

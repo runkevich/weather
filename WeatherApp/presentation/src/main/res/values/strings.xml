@@ -2,7 +2,7 @@
     <string name="app_name">WeatherApp</string>
 
     <string name="activity_title_city_list">Список городов</string>
-    <string name="activity_title_weather">Weather</string>
+    <string name="activity_title_weather">Погода</string>
 
     <string name="exception_message_generic">Ошибка приложения</string>
     <string name="london">Лондон</string>

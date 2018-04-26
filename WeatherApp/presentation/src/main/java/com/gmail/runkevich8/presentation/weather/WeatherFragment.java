@@ -33,19 +33,24 @@ public class WeatherFragment extends BaseFragment implements WeatherMvpContract.
 
     @BindView(R.id.tv_city_name)
     TextView tvCityName;
-    @BindView(R.id.tv_weather_description) TextView tvWeatherDescription;
+    @BindView(R.id.tv_weather_description)
+    TextView tvWeatherDescription;
     @BindView(R.id.imv_icon)
     ImageView imvIcon;
-    @BindView(R.id.tv_current_temp) TextView tvCurrentTemp;
-    @BindView(R.id.tv_today_temp_range) TextView tvTodayTempRange;
+    @BindView(R.id.tv_current_temp)
+    TextView tvCurrentTemp;
+    @BindView(R.id.tv_today_temp_range)
+    TextView tvTodayTempRange;
     @BindView(R.id.btn_celsius)
     Button btnCelsius;
-    @BindView(R.id.btn_fahrenheit) Button btnFahrenheit;
+    @BindView(R.id.btn_fahrenheit)
+    Button btnFahrenheit;
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
     @BindView(R.id.progress_bar_weather)
     ProgressBar progressBar;
-    @BindView(R.id.tv_error_message) TextView tvErrorMessage;
+    @BindView(R.id.tv_error_message)
+    TextView tvErrorMessage;
 
     public static WeatherFragment forCity(String cityId) {
         final WeatherFragment weatherFragment = new WeatherFragment();
