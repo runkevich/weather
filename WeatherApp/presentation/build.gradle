@@ -65,6 +65,8 @@ dependencies {
 
     implementation dependency.constraintLayout
 
+    implementation dependency.arrow
+
     implementation project(path: ':data')
     implementation project(path: ':domain')
 

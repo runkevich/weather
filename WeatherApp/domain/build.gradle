@@ -31,5 +31,11 @@ dependencies {
 
     api dependency.javaxInject
 
+    api dependency.arrow
 
+    api dependency.mockito
+
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
 }

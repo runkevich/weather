@@ -29,12 +29,9 @@ public class WeatherActivity extends BaseActivity implements HasComponent<Weathe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
-
-        this.initializeInjector();
         this.initializeActivity(savedInstanceState);
-
+        this.initializeInjector();
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -61,7 +58,8 @@ public class WeatherActivity extends BaseActivity implements HasComponent<Weathe
                 .build();
     }
 
-    @Override public WeatherComponent getComponent() {
+    @Override
+    public WeatherComponent getComponent() {
         return weatherComponent;
     }
 }

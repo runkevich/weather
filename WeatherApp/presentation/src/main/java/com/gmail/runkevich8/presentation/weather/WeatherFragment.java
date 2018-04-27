@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.fernandocejas.arrow.checks.Preconditions;
 import com.gmail.runkevich8.injection.component.WeatherComponent;
 import com.gmail.runkevich8.presentation.base.BaseFragment;
 import com.gmail.runkevich8.presentation.utills.ImageLoader;
@@ -118,7 +119,7 @@ public class WeatherFragment extends BaseFragment implements WeatherMvpContract.
     public void renderWeather(WeatherViewModel weather) {
         showAllNonErrorViews(true);
         tvErrorMessage.setVisibility(View.GONE);
-        if (weather != null) {
+       if (weather != null) {
             this.tvCityName.setText(weather.getCityName());
             this.tvWeatherDescription.setText(weather.getDescription());
             this.tvCurrentTemp.setText(weather.getCurrentTemp());
@@ -163,7 +164,7 @@ public class WeatherFragment extends BaseFragment implements WeatherMvpContract.
 
     private String currentCityId() {
         final Bundle arguments = getArguments();
-       // Preconditions.checkNotNull(arguments, getString(R.string.fragment_args_cannot_be_null));
+        Preconditions.checkNotNull(arguments, getString(R.string.fragment_args_cannot_be_null));
         return arguments.getString(PARAM_CITY_ID);
     }
 

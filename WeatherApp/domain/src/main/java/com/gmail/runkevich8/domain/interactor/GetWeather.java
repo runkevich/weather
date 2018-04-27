@@ -21,7 +21,7 @@ public class GetWeather extends  UseCase<Weather, GetWeather.Params> {
            PostExecutionThread postExecutionThread, WeatherTransformer weatherTransformer) {
         super(threadExecutor, postExecutionThread);
        // Preconditions.checkNotNull(weatherRepository);
-      //  Preconditions.checkNotNull(threadExecutor);
+       // Preconditions.checkNotNull(threadExecutor);
        // Preconditions.checkNotNull(postExecutionThread);
       //  Preconditions.checkNotNull(weatherTransformer);
         this.weatherTransformer = weatherTransformer;

@@ -1,6 +1,7 @@
 package com.gmail.runkevich8.domain.interactor;
 
 
+import com.fernandocejas.arrow.checks.Preconditions;
 import com.gmail.runkevich8.domain.executor.PostExecutionThread;
 import com.gmail.runkevich8.domain.executor.ThreadExecutor;
 
@@ -27,7 +28,7 @@ public abstract class UseCase<T, Params> {
 
 
     public void execute(DisposableObserver<T> observer, Params params) {
-        //Preconditions.checkNotNull(observer);
+        Preconditions.checkNotNull(observer);
         final Observable<T> observable = this.buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.getScheduler());
